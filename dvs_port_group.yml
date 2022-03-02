@@ -1,0 +1,36 @@
+---
+- hosts: localhost
+  gather_facts: false
+  connection: local
+  vars:
+    - server_parameter.yml
+
+  tasks:
+    - name: Create PG Testing_123
+      community.vmware.vmware_dvs_portgroup:
+        validate_certs: False
+        portgroup_name: Testing_123
+        vlan_id: 123
+        hostname: "{{ vcenter_server }}"
+        username: "{{ vcenter_user }}"
+        password: "{{ vcenter_pass }}"
+        switch_name: "{{ distributed_sw }}"
+        num_ports: 128
+        port_binding: ephemeral
+        state: present
+      delegate_to: localhost
+
+################ According to {port_binding} Values ################
+    # - name: Create PG Testing_123
+    #   community.vmware.vmware_dvs_portgroup:
+    #     validate_certs: False
+    #     portgroup_name: Testing_123
+    #     vlan_id: 123
+    #     hostname: "{{ vcenter_server }}"
+    #     username: "{{ vcenter_user }}"
+    #     password: "{{ vcenter_pass }}"
+    #     switch_name: "{{ distributed_sw }}"
+    #     num_ports: 128
+    #     port_binding: static
+    #     state: present
+    #   delegate_to: localhost
