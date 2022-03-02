@@ -1,0 +1,6 @@
+vcenter_server: "DOMAIN"
+vcenter_user: "administrator@vsphere.local"
+vcenter_pass: "PASSWORD"
+datacenter_name: "DATA Center NAME"
+cluster_name: "Cluster NAME"
+distributed_sw: "VDS Name"
